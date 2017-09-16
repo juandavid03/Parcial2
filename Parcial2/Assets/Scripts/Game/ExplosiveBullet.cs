@@ -4,7 +4,7 @@ namespace Parcial2.Game
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]
-    public class Bullet : MonoBehaviour
+    public class ExplosiveBullet : MonoBehaviour
     {
         private Rigidbody myRigidBody;
         private float speed;
@@ -37,18 +37,12 @@ namespace Parcial2.Game
 
                 if (enemy != null)
                 {
-                    enemy.ReceiveDamage(damage);
+                    Estallar();
                 }
             }
 
             if (instigator != other.gameObject)
             {
-                var player = instigator.GetComponent<Player>();
-                if (player != null)
-                {
-                    instigator.GetComponent<Player>().ActivarBoton(player.dispararNormal);
-                    instigator.GetComponent<Player>().ActivarBoton(player.dispararEspecial);
-                }
                 Destroy(gameObject); 
             }
         }
@@ -62,6 +56,23 @@ namespace Parcial2.Game
         private void OnDestroy()
         {
             myRigidBody = null;
+        }
+
+        private void Estallar()
+        {
+            Collider[] otherColliders = Physics.OverlapSphere(transform.position, 10F);
+
+            for (int i = 0; i < otherColliders.Length; i++)
+            {
+                {
+                    Enemy enemy = otherColliders[i].GetComponent<Enemy>();
+
+                    if (enemy != null)
+                    {
+                        enemy.ReceiveDamage(damage);
+                    }
+                }
+            }
         }
     } 
 }

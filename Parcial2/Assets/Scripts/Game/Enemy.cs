@@ -25,7 +25,6 @@ namespace Parcial2.Game
 
         [SerializeField]
         private float speed;
-
         public int Atk { get; protected set; }
         public int HP { get; protected set; }
 
@@ -34,7 +33,6 @@ namespace Parcial2.Game
         public void ReceiveDamage(int damage, bool collidedWithPlayer = false)
         {
             Debug.Log(string.Format("[{0}] received [{1}] damage pts, remaining [{2}] HP", name, damage, HP));
-
             if (collidedWithPlayer)
             {
                 canMove = false;
@@ -46,6 +44,7 @@ namespace Parcial2.Game
             {
                 Destroy(this.gameObject);
             }
+
         }
 
         private void Start()
@@ -91,6 +90,11 @@ namespace Parcial2.Game
                     transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 }
             }
+        }
+        public void SetVariables(int HitPoints, int Attack)
+        {
+            Atk = Attack;
+            HP = HitPoints;
         }
     }
 }
