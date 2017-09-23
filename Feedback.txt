@@ -1,0 +1,16 @@
+Feedback
+
+1. OK (0.3)
+2. Falta el caso en que la velocidad del enemigo sea 0 (0.2)
+3. Faltó especificar que se usa instancia directa (Instantiate()) (0.25)
+4. OK (0.3)
+5. OK (0.3)
+
+Código
+1. OK (0.5)
+2. OK (0.5)
+3. OK (1.0)
+4. OK (1.0)
+5. El pool solo agrega items, pero no los entrega o los recicla. Tampoco está integrado a la funcionalidad del player (0.2)
+
+Total: 4.55
